@@ -13,7 +13,6 @@ io.sockets.on('connection', function(socket) {
         count = 0;
         io.emit('serverResponse', count);
     });  
-
 })
 
 app.set('view engine', 'ejs');
