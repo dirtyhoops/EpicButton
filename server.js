@@ -6,12 +6,12 @@ var count = 0;
 io.sockets.on('connection', function(socket) {
     socket.on( "count", function(){
         count++;
-        socket.emit('serverResponse', count);
+        io.emit('serverResponse', count);
     });
     
     socket.on( "clear", function(){
         count = 0;
-        socket.emit('serverResponse', count);
+        io.emit('serverResponse', count);
     });  
 
 })
@@ -19,7 +19,6 @@ io.sockets.on('connection', function(socket) {
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/static'));
-
 
 app.get('/', function(req, res) {
     res.render('index')
